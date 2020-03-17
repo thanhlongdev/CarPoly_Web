@@ -21,14 +21,14 @@
         </thead>
         <tbody>
         <c:choose>
-            <c:when test="${empty listCategory}">
+            <c:when test="${empty listCategories}">
                 <tr colspan="3">NO DATA</tr>
             </c:when>
             <c:otherwise>
-                <c:forEach begin="0" end="${listCategory.size()-1}" varStatus="stt" var="category" items="${listCategory}">
+                <c:forEach begin="0" end="${listCategories.size()-1}" varStatus="stt" var="category" items="${listCategories}">
                     <tr>${stt.index+1}</tr>
-                    <tr>${category.categoryId}</tr>
-                    <tr>${category.categoryName}</tr>
+                    <tr>${category.id}</tr>
+                    <tr>${category.name}</tr>
                 </c:forEach>
             </c:otherwise>
         </c:choose>
