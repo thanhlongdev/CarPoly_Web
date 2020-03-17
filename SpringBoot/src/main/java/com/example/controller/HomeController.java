@@ -3,13 +3,8 @@ package com.example.controller;
 import com.example.model.Staff;
 import com.example.service.StaffService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -19,18 +14,36 @@ public class HomeController {
     private StaffService staffService;
 
     @RequestMapping(value = "hello", method = RequestMethod.GET)
-    public String display(){
+    public String display() {
         return "Greetings from Spring Boot!";
     }
 
-    @RequestMapping(value = "staffs")
-    public List<Staff> getStaffs(){
+    @RequestMapping(value = "staffs", method = RequestMethod.GET)
+    public List<Staff> getStaffs() {
         return staffService.getStaffs();
     }
 
-    @RequestMapping(value = "staffs/{name}")
-    public Staff getStaff(@PathVariable("name") String name){
-        return staffService.getStaff(name);
+    //USE POSTMAN APPLICATION TO TEST ALL CASE BELOW
+    //func add single staff
+    @RequestMapping(value = "staffs", method = RequestMethod.POST)
+    public void addStaff(@RequestBody Staff staff) {
+        staffService.addStaff(staff);
+    }
+    //func get single staff
+    @RequestMapping(value = "staffs/{id}", method = RequestMethod.GET)
+    public Staff getStaff(@PathVariable("id") int id) {
+        return staffService.getStaff(id);
     }
 
+    //func update single staff
+    @RequestMapping(value = "staffs/{id}", method = RequestMethod.PUT)
+    public void updateStaff(@RequestBody Staff staff, @PathVariable("id") int id) {
+        staffService.updateStaff(staff, id);
+    }
+
+    //func delete single staff
+    @RequestMapping(value = "staffs/{id}", method = RequestMethod.DELETE)
+    public void deleteStaff(@PathVariable("id") int id) {
+        staffService.deleteStaff(id);
+    }
 }

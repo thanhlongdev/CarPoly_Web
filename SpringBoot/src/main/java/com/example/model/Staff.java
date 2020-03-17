@@ -1,6 +1,7 @@
 package com.example.model;
 
 public class Staff {
+    private int id;
     private String name;
     private int age;
     private String email;
@@ -8,10 +9,19 @@ public class Staff {
     public Staff() {
     }
 
-    public Staff(String name, int age, String email) {
+    public Staff(int id, String name, int age, String email) {
+        this.id = id;
         this.name = name;
         this.age = age;
         this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -41,7 +51,8 @@ public class Staff {
     @Override
     public String toString() {
         return "Staff{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", age=" + age +
                 ", email='" + email + '\'' +
                 '}';
