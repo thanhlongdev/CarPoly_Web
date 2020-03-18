@@ -1,5 +1,6 @@
 package com.example;
 
+import com.example.helper.EncodingURL;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -7,7 +8,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class DemoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(DemoApplication.class, args);
+        for (int i = 0; i < 1000000; i++){
+            System.out.println("record " + i + ": " + EncodingURL.encodingURL(""+i,"xpeter" + i));
+        }
+        //SpringApplication.run(DemoApplication.class, args);
     }
 
 //    @Bean
